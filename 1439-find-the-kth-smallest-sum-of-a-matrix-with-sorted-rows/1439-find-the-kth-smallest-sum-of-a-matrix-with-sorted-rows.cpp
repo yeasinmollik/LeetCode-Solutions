@@ -33,8 +33,7 @@ public:
                     w[0] = sum - mat[j-1][col] + mat[j-1][col + 1];
                     w[j] = col + 1;
                     
-                    if(already.find(w) == already.end())
-                        pq.push(w);
+                    pq.push(w);
                 
                     w[j] = col;
                     w[0] = sum;
