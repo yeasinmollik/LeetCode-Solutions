@@ -1,4 +1,4 @@
-typedef tuple<int, unsigned char, unsigned char> tupl;
+typedef tuple<int, int, int> tupl;
 
 class Solution {
 public:
