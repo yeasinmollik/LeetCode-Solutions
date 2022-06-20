@@ -8,13 +8,12 @@ public:
     int minimumLengthEncoding(vector<string>& words) {
         root = new TrieNode();
         int n = words.size();
-        
+    
         for(int i = 0; i < n; i++){
             insert(string(words[i].rbegin(), words[i].rend()), i);
         }
         
-        int ans = 0;
-        
+        int ans = 0;    
         dfs(root, 0, ans);
         
         return ans;
@@ -45,7 +44,6 @@ public:
             
             curr = curr->children[id];
         }
-        
         curr->end = true;
     }
 };
