@@ -5,6 +5,11 @@ public:
         
         // hp[i][j] = minimum initial health needed if we start from dungeon[i][j]
         vector<vector<int>> hp(n, vector<int>(m, 500000));
+        
+        // We move from the bottom-right to the top-left. Because, moving from the top-left to bottom-right won't give use correct answer.
+        // This is because the path to be taken depends upon the future demons seen on the way to princess, which is not available in top down approach.
+        
+        // base case
         hp[n-1][m-1] = (dungeon[n-1][m-1] >= 0 ? 1 : -dungeon[n-1][m-1] + 1);
         
         // last row
@@ -27,6 +32,5 @@ public:
         }
             
         return hp[0][0];
-        
     }
 };
