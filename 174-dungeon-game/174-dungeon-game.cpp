@@ -1,6 +1,5 @@
 typedef tuple<int, int, int> tupl;
 
-
 class Solution {
 public:
     int n, m;
