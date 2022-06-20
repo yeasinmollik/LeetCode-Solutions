@@ -32,7 +32,7 @@ public:
     int calculateMinimumHP(vector<vector<int>>& dungeon) {
         n = dungeon.size(), m = dungeon[0].size();
     
-        int l = (dungeon[0][0] > 0 ? 1 : -dungeon[0][0] + 1), r = 1e9, ans = 1e9;
+        int l = (dungeon[0][0] > 0 ? 1 : -dungeon[0][0] + 1), r = 500000, ans = 500000;
         
         while(l <= r) {
             int m = (l + r) / 2;
