@@ -2,17 +2,31 @@ class Solution {
 public:
     int calculateMinimumHP(vector<vector<int>>& dungeon) {
         int n = dungeon.size(), m = dungeon[0].size();
-        vector<vector<int>> dp(n + 1, vector<int>(m + 1, 500000));
-        dp[n][m-1] = 1;
-        dp[n-1][m] = 1;
         
-        for(int i = n -1; i >= 0; i--) {
-            for(int j = m - 1; j >= 0; j--) {
-                int needed = min(dp[i + 1][j], dp[i][j + 1]) - dungeon[i][j];
-                dp[i][j] = (needed <= 0 ? 1 : needed);
-            }
+        // hp[i][j] = minimum initial health needed if we start from dungeon[i][j]
+        vector<vector<int>> hp(n, vector<int>(m, 500000));
+        hp[n-1][m-1] = (dungeon[n-1][m-1] >= 0 ? 1 : -dungeon[n-1][m-1] + 1);
+        
+        // last row
+        for(int i = m-2; i >= 0; i--) {
+            int needed = hp[n-1][i + 1] - dungeon[n-1][i];
+            hp[n-1][i] = (needed <= 0? 1 : needed);
         }
         
-        return dp[0][0];
+        // last column
+        for(int i = n-2; i>=0; i--){
+            int needed = hp[i + 1][m-1] - dungeon[i][m-1];
+            hp[i][m-1] = (needed <= 0? 1: needed);
+        }
+            
+        for(int i = n-2; i >= 0; i--) {
+            for(int j = m-2; j >= 0; j--){
+                int needed = min(hp[i + 1][j], hp[i][j + 1]) - dungeon[i][j];
+                hp[i][j] = (needed <= 0? 1 : needed);
+            }
+        }
+            
+        return hp[0][0];
+        
     }
 };
