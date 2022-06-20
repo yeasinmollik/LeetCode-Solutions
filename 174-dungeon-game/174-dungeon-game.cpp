@@ -6,7 +6,7 @@ public:
         // hp[i][j] = minimum initial health needed if we start from dungeon[i][j]
         int hp[200][200];
         
-        // We move from the bottom-right to the top-left. Because, moving from the top-left to bottom-right won't give use correct answer.
+        // We move from the bottom-right to the top-left. Because, moving from the top-left to bottom-right won't give us the correct answer.
         // This is because the path to be taken depends upon the future demons seen on the way to princess, which is not available in top down approach.
         
         // base case
