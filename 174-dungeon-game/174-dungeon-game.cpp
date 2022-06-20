@@ -15,14 +15,20 @@ public:
             if(i == n - 1 && j == m - 1)
                 return true;
             
-            if(i + 1 < n && dungeon[i + 1][j] + health > mx[i + 1][j]) {
-                pq.push(make_tuple(health + dungeon[i + 1][j], i + 1, j));
-                mx[i + 1][j] = dungeon[i + 1][j] + health;
+            if(i + 1 < n) {
+                int new_health = dungeon[i + 1][j] + health;
+                if(new_health > mx[i + 1][j]) {
+                    pq.push(make_tuple(new_health, i + 1, j));
+                    mx[i + 1][j] = new_health;
+                }
             }
             
-            if(j + 1 < m && dungeon[i][j + 1] + health > mx[i][j + 1]) {
-                pq.push(make_tuple(health + dungeon[i][j + 1], i, j + 1));
-                mx[i][j + 1] = dungeon[i][j + 1] + health;
+            if(j + 1 < m) {
+                int new_health = dungeon[i][j + 1] + health;
+                if(new_health > mx[i][j + 1]) {
+                    pq.push(make_tuple(new_health, i, j + 1));
+                    mx[i][j + 1] = new_health;
+                }
             }
         }
         
