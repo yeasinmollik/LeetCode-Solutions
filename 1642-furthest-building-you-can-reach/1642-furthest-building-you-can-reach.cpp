@@ -27,21 +27,20 @@ public:
         
         int k = diffs.size() - ladders;
         priority_queue<int> pq;
+        long long sum = 0;
         for(int i = 0; i < k; i++)
-            pq.push(diffs[i]);
+            sum += diffs[i], pq.push(diffs[i]);
         
         for(int i = k; i < diffs.size(); i++){
             if(diffs[i] < pq.top()) {
+                sum -= pq.top();
                 pq.pop();
+                
                 pq.push(diffs[i]);
+                sum += diffs[i];
             }
         }
-        
-        int sum = 0;
-        while(!pq.empty()){
-            sum += pq.top();
-            pq.pop();
-        }
+
         return sum <= bricks;
     }
 };
