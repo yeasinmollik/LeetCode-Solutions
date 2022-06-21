@@ -10,7 +10,8 @@ public:
             for(int j = 1; j <= m; j++) {
                 if(nums1[i-1] == nums2[j-1]) {
                     dp[i][j] = 1 + dp[i-1][j-1];
-                    ans = max(ans, dp[i][j]);
+                    if(ans < dp[i][j])
+                        ans = dp[i][j];
                 }                    
             }
         }
