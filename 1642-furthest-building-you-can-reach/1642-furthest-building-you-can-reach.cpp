@@ -4,7 +4,6 @@ public:
         int n = heights.size();
         
         int l = 0, r = n-1, ans = 0;
-        
         while(l <= r){
             int m = (l + r)/2;
             
@@ -17,11 +16,11 @@ public:
         return ans;
     }
     
-    bool okay(vector<int> &h, int target, int bricks, int ladders){
+    bool okay(vector<int> &heights, int target, int bricks, int ladders){
         vector<int> diffs;
         for(int i = 1; i <= target; i++) {
-            if(h[i] > h[i-1])
-                diffs.emplace_back(h[i] - h[i-1]);
+            if(heights[i] > heights[i-1])
+                diffs.emplace_back(heights[i] - heights[i-1]);
         }        
         sort(diffs.begin(), diffs.end(), greater<int>());
         
