@@ -1,6 +1,7 @@
 class Solution {
 public:
     int n;
+    vector<vector<int>> dp;
     bool canPartition(vector<int>& nums) {
         n = nums.size();
         int sum = 0;
@@ -8,23 +9,21 @@ public:
             sum += x;
         if(sum % 2 == 1)
             return false;
-        
         int target = sum / 2;
+        dp.resize(n, vector<int>(target + 1, -1));
+        return canSubsetSum(nums, 0, 0, target);
+    }
+    
+    bool canSubsetSum(vector<int>& nums, int idx, int sum, int target) {
+        if(sum == target)
+            return true;
+        if(idx == n || sum > target)
+            return false;
+        if(dp[idx][sum]!= -1)
+            return dp[idx][sum];
         
-        vector<vector<bool>> dp(n + 1, vector<bool>(target + 1));
-        
-        dp[0][0] = true;
-        
-        for(int i = 1; i <= n; i++){
-            for(int j = 0; j <= target; j++) {
-                dp[i][j] = dp[i-1][j];
-                
-                if(j >= nums[i-1])
-                    dp[i][j] = dp[i][j] | dp[i-1][j - nums[i-1]];
-            }
-        }
-        
-        return dp[n][target];
+        return dp[idx][sum] = canSubsetSum(nums, idx + 1, sum + nums[idx], target) | canSubsetSum(nums, idx + 1, sum, target);
+
     }
     
 };
