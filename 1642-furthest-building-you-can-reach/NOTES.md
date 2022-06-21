@@ -1,7 +1,7 @@
 ### Binary Search
 Some thinking got me the intuition that, we should always try to use ladders for the buildings with higher height difference.
 
-For example, if $[1, 2, 1, 10]$ are the heights of buildings and we have one ladder and one brick, we should use the ladder to move from building 3 to building 4 and use that one brick to move from building 1 to building 2. Using ladders for higher highet differences and using bricks for the rest is the most optimal approach!
+For example, if $[1, 2, 1, 10]$ are the heights of buildings and we have one ladder and one brick, we should use the ladder to move from building 3 to building 4 and use that one brick to move from building 1 to building 2. Using ladders for higher height differences and using bricks for the rest is the most optimal approach!
 
 I did a binary search on the building I want to move and checked if its possible to move there using above approach.
 
