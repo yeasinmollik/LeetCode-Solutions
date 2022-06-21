@@ -11,7 +11,7 @@ public:
         
         int target = sum / 2;
         
-        vector<bool> last(target + 1), curr(target + 1);
+        int last[10010] = {}, curr[10010] = {};
         last[0] = true;
         
         for(int i = 1; i <= n; i++){
@@ -21,7 +21,7 @@ public:
                 if(j >= nums[i-1])
                     curr[j] = curr[j] | last[j - nums[i-1]];
             }
-            last = curr;
+            copy(begin(curr), end(curr), begin(last));
         }
         
         return last[target];
