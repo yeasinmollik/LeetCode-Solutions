@@ -3,6 +3,8 @@ public:
     int furthestBuilding(vector<int>& heights, int bricks, int ladders) {
         int n = heights.size();
         
+        // ladders are reserverd for larger height differences are reserved
+        // min priority-queue is used to keep track of larger height differences
         priority_queue<int, vector<int>, greater<int>> pq;
         long bricks_needed = 0;
         
