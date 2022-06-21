@@ -12,11 +12,11 @@ public:
     
     TreeNode* solve(vector<int> &in, int l, int r, vector<int>& post, int id){
         TreeNode* root = new TreeNode(post[id]);
-        int m = pos[post[id]];
-        if(l <= m-1)
-            root->left = solve(in, l, m-1, post, id + r - m + 1);
-        if(m + 1 <= r)
-            root->right = solve(in, m + 1, r, post, id + 1);
+        int mid = pos[post[id]];
+        if(l <= mid-1)
+            root->left = solve(in, l, mid-1, post, id + r - mid + 1);
+        if(mid + 1 <= r)
+            root->right = solve(in, mid + 1, r, post, id + 1);
         return root;
     }
 };
