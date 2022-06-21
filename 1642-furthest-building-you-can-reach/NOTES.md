@@ -44,7 +44,7 @@ public:
 ```
 
 ### Priority Queue
-This approach is better than the above approach! The main idea is, while moving from the left to the right, we keep track of $ladders$ number of the greatest height differences using a min-priority_queue. We use ladders for these larger height difference and the given bricks are used for lower height differnces. If at any point the given number of bricks aren't enough to resolve those lower height differences, we stop right there. 
+This approach is better than the above approach! The main idea is, while moving from the left to the right, we keep track of $ladders$ number of greatest height differences using a min-priority_queue. We use ladders for these greater height differences and bricks are used for the rest. If at any point number of bricks needed exceeds the given number of bricks, we stop right there. 
 
 ```cpp
 class Solution {
