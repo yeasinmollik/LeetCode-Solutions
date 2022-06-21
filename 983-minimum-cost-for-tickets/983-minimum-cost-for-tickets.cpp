@@ -9,7 +9,7 @@ public:
         int intervals[3] = {1, 7, 30};
         
         for(int i = n - 2; i >= 0; i--) {
-            dp[i] = 1e9;
+            dp[i] = 1e7;
             for(int j = 0; j < 3; j++) {
                 int next_idx = lower_bound(days.begin(), days.end(), days[i] + intervals[j]) - days.begin();
                 int next_cost = (next_idx == n ? 0 : dp[next_idx]);
