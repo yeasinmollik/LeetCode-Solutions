@@ -15,8 +15,7 @@ public:
         
         for(int i = 1; i <= n; i++){
             for(int j = 0; j <= target; j++) {
-                curr[j] = last[j];
-                
+                curr[j] = last[j];      
                 if(j >= nums[i-1])
                     curr[j] = curr[j] | last[j - nums[i-1]];
             }
