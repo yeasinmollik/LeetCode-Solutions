@@ -4,7 +4,7 @@ class Solution {
 public:
     int mincostTickets(vector<int>& days, vector<int>& costs) {
         int n = days.size();
-        vector<int> dp(n);
+        int dp[365];
         dp[n - 1] = min({costs[0], costs[1], costs[2]});
         int intervals[3] = {1, 7, 30};
         
