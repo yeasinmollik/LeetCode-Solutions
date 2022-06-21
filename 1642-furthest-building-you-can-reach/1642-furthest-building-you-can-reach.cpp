@@ -3,44 +3,26 @@ public:
     int furthestBuilding(vector<int>& heights, int bricks, int ladders) {
         int n = heights.size();
         
-        int l = 0, r = n-1, ans = 0;
-        while(l <= r){
-            int m = (l + r)/2;
-            
-            if(okay(heights, m, bricks, ladders))
-                l = m + 1, ans = m;
-            else
-                r = m - 1;
-        }      
-        return ans;
-    }
-    
-    bool okay(vector<int> &heights, int target, int bricks, int ladders){
-        vector<int> diffs;
-        for(int i = 1; i <= target; i++) {
-            if(heights[i] > heights[i-1])
-                diffs.emplace_back(heights[i] - heights[i-1]);
-        }   
-        
-        if(diffs.size() <= ladders)
-            return true;
-        
-        int k = diffs.size() - ladders;
-        priority_queue<int> pq;
-        long long sum = 0;
-        for(int i = 0; i < k; i++)
-            sum += diffs[i], pq.push(diffs[i]);
-        
-        for(int i = k; i < diffs.size(); i++){
-            if(diffs[i] < pq.top()) {
-                sum -= pq.top();
-                pq.pop();
+        priority_queue<long long, vector<long long>, greater<long long>> pq;
+        long long mx_sum = 0, sum = 0, ans = 0;
+        for(int i = 1; i < n; i++) {
+            if(heights[i] > heights[i-1]){
+                int diff = heights[i] - heights[i-1];
+                sum += diff;
                 
-                pq.push(diffs[i]);
-                sum += diffs[i];
+                if(pq.size() < ladders)
+                    mx_sum += diff, pq.push(diff);
+                else if(!pq.empty() && pq.top() < diff){
+                        mx_sum -= pq.top();
+                        pq.pop();
+                        
+                        mx_sum += diff;
+                        pq.push(diff);
+                }
             }
+            if(sum - mx_sum <= bricks)
+                    ans = i;
         }
-
-        return sum <= bricks;
+        return ans;
     }
 };
