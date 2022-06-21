@@ -1,7 +1,7 @@
 class Solution {
 public:
     int n;
-    vector<vector<int>> dp;
+    vector<vector<char>> dp;
     bool canPartition(vector<int>& nums) {
         n = nums.size();
         int sum = 0;
@@ -10,7 +10,7 @@ public:
         if(sum % 2 == 1)
             return false;
         int target = sum / 2;
-        dp.resize(n, vector<int>(target + 1, -1));
+        dp.resize(n, vector<char>(target + 1, -1));
         return canSubsetSum(nums, 0, 0, target);
     }
     
