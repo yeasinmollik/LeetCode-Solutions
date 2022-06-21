@@ -11,7 +11,7 @@ public:
         
         int target = sum / 2;
         
-        int last[10010] = {}, curr[10010] = {};
+        bool last[10010] = {}, curr[10010] = {};
         last[0] = true;
         
         for(int i = 1; i <= n; i++){
