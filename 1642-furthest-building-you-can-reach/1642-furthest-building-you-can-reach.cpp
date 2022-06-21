@@ -20,7 +20,11 @@ public:
         for(int i = 1; i <= target; i++) {
             if(heights[i] > heights[i-1])
                 diffs.emplace_back(heights[i] - heights[i-1]);
-        }        
+        }   
+        
+        if(diffs.size() <= ladders)
+            return true;
+        
         sort(diffs.begin(), diffs.end(), greater<int>());
         
         int sum = 0;
