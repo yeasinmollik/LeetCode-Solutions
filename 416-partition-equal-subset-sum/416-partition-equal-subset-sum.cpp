@@ -9,8 +9,7 @@ public:
         if(sum % 2 == 1)
             return false;
         
-        int target = sum / 2;
-        
+        int target = sum / 2;   
         bool last[10010] = {}, curr[10010] = {};
         last[0] = true;
         
@@ -25,6 +24,5 @@ public:
         }
         
         return last[target];
-    }
-    
+    } 
 };
