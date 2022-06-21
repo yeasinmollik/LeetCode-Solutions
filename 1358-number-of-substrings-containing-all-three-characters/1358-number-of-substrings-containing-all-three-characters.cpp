@@ -2,8 +2,8 @@ class Solution {
 public:
     int numberOfSubstrings(string s) {
         int n = s.size();    
-        int l = 0, r = 0, ans = 0;
-        int freq[3] = {}, cnt = 0;
+        int freq[3] = {};
+        int l = 0, r = 0, cnt = 0, ans = 0;
         
         while(r < n){
             freq[s[r] - 'a']++;
