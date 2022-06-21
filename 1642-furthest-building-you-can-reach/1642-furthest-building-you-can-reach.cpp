@@ -11,8 +11,7 @@ public:
                 l = m + 1, ans = m;
             else
                 r = m - 1;
-        }
-        
+        }      
         return ans;
     }
     
