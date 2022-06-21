@@ -5,7 +5,6 @@ public:
         
         priority_queue<int, vector<int>, greater<int>> pq;
         long sum = 0;
-        int ans = 0;
         
         for(int i = 1; i < n; i++) {
             if(heights[i] > heights[i-1]){
@@ -21,10 +20,9 @@ public:
                 else
                     sum += diff;
             }
-            if(sum <= bricks)
-                    ans = i;
-            else break;
+            if(sum > bricks)
+                return i-1;
         }
-        return ans;
+        return n-1;
     }
 };
