@@ -23,6 +23,7 @@ public:
             }
             if(sum <= bricks)
                     ans = i;
+            else break;
         }
         return ans;
     }
