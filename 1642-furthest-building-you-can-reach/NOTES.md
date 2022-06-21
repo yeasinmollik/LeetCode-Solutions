@@ -45,3 +45,36 @@ public:
 
 ### Priority Queue
 This approach is better than the above approach! The main idea is, while moving from the left to the right, we keep track of $ladders$ number of the greatest height differences using a min-priority_queue. We use ladders for these larger height difference and the given bricks are used for lower height differnces. If at any point the given number of bricks aren't enough to resolve those lower height differences, we stop right there. 
+
+```cpp
+class Solution {
+public:
+    int furthestBuilding(vector<int>& heights, int bricks, int ladders) {
+        int n = heights.size();
+        
+        // ladders are reserverd for larger height differences are reserved
+        // min priority-queue is used to keep track of larger height differences
+        priority_queue<int, vector<int>, greater<int>> pq;
+        long bricks_needed = 0;
+        
+        for(int i = 1; i < n; i++) {
+            if(heights[i] > heights[i-1]){
+                int diff = heights[i] - heights[i-1];
+                
+                if(pq.size() < ladders)
+                    pq.push(diff);
+                else if(!pq.empty() && pq.top() < diff){
+                        bricks_needed += pq.top();
+                        pq.pop();
+                        pq.push(diff);
+                }
+                else
+                    bricks_needed += diff;
+            }
+            if(bricks_needed > bricks)
+                return i-1;
+        }
+        return n-1;
+    }
+};
+```
