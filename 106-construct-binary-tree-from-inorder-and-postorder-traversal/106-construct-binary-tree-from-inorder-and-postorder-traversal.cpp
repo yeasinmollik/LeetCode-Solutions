@@ -12,7 +12,7 @@
 class Solution {
 public:
     int n, m;
-    unordered_map<short, short> pos;
+    unordered_map<int, int> pos;
     TreeNode* buildTree(vector<int>& inorder, vector<int>& postorder) {
         n = inorder.size(), m = postorder.size();
         reverse(postorder.begin(), postorder.end());
