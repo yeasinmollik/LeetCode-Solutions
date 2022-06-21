@@ -11,11 +11,10 @@ public:
         
         int target = sum / 2;
         
-        vector<bool> last(target + 1);
+        vector<bool> last(target + 1), curr(target + 1);
         last[0] = true;
         
         for(int i = 1; i <= n; i++){
-            vector<bool> curr(target + 1);
             for(int j = 0; j <= target; j++) {
                 curr[j] = last[j];
                 
