@@ -2,7 +2,6 @@ class Solution {
 public:
     int minDistance(string word1, string word2) {
        int n = word1.size(), m = word2.size();
-        
         // space optimized lcs implementaion
         int last[501] = {};
         for(int i = 1; i <= n; i++){
