@@ -17,8 +17,7 @@ public:
                         maxArea = area;
                 }
             }
-        }
-        
+        }  
         return maxArea;
     }
     
