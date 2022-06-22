@@ -28,12 +28,8 @@ public:
         
         for(int k = 0; k < 4; k++){
             int p = i + x[k], q = j + y[k];
-            if(valid(p, q) && grid[p][q] && !vis[p][q])
+            if(p >= 0 && p < n && q >= 0 && q < m && grid[p][q] && !vis[p][q])
                 dfs(p, q, area, grid);
         }
-    }
-    
-    bool valid(int &i, int &j){
-        return i >= 0 && i < n && j >= 0 && j < m;
     }
 };
