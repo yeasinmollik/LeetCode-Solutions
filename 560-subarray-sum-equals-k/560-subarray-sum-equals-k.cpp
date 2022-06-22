@@ -7,8 +7,8 @@ public:
         int prefix_sum = 0;
         int number_of_subarrays = 0;
         
-        for(int &x: nums) {
-            prefix_sum += x;
+        for(int i = 0; i < nums.size(); i++) {
+            prefix_sum += nums[i];
             number_of_subarrays += count[prefix_sum - k];
             count[prefix_sum]++;
         }
