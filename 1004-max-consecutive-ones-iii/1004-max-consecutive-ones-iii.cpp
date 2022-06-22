@@ -7,14 +7,13 @@ public:
         int cnt[2] = {};
         while(r < n){
             cnt[nums[r]]++;  
-            while(l <= r && cnt[0] > k){
+            while(cnt[0] > k){
                 cnt[nums[l]]--;
                 l++;
             }
             ans = max(ans, cnt[0] + cnt[1]);
             r++;
-        }
-        
+        }   
         return ans;
     }
 };
