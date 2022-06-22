@@ -14,6 +14,6 @@ public:
             max_dp_minus_price = max(max_dp_minus_price, dp[i - 2] - prices[i-1]);
         }
         
-        return *max_element(dp, dp + 5010);
+        return dp[n];
     }
 };
