@@ -5,13 +5,15 @@ public:
         
         int l = 0, r = 0, ans = 0;
         int cnt[2] = {};
+        
         while(r < n){
             cnt[nums[r]]++;  
             while(cnt[0] > k){
                 cnt[nums[l]]--;
                 l++;
             }
-            ans = max(ans, cnt[0] + cnt[1]);
+            if(cnt[0] + cnt[1] > ans)
+                ans = cnt[0] + cnt[1];
             r++;
         }   
         return ans;
