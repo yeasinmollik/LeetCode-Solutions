@@ -1,9 +1,12 @@
 class Solution {
 public:
-    bool vis[100010] = {};
-    vector<int> g[100010];
+    vector<vector<int>> g;
+    vector<bool> vis;
     
     int makeConnected(int n, vector<vector<int>>& connections) {
+        g.resize(n + 1);
+        vis.resize(n + 1);
+        
         for(int i = 0; i < connections.size(); i++){
             g[connections[i][0]].emplace_back(connections[i][1]);
             g[connections[i][1]].emplace_back(connections[i][0]);
