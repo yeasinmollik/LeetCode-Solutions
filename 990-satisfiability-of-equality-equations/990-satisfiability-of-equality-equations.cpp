@@ -24,8 +24,7 @@ public:
     }
     
     void dfs(int u, int &c){
-        color[u] = c;
-        
+        color[u] = c;  
         for(int &v: g[u]){
             if(!color[v])
                 dfs(v, c);
