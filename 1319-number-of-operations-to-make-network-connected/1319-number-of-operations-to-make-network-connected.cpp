@@ -2,6 +2,7 @@ class Solution {
 public:
     bool vis[100010] = {};
     vector<int> g[100010];
+    
     int makeConnected(int n, vector<vector<int>>& connections) {
         for(int i = 0; i < connections.size(); i++){
             g[connections[i][0]].emplace_back(connections[i][1]);
@@ -15,7 +16,8 @@ public:
                 connected_components++;
                 
                 dfs(i, nodes, edges);
-                //cout << edges / 2 << " " << nodes << endl;
+                
+                //every edges is counted twice. So, divide total edges by 2
                 extra_edges += (edges / 2) - (nodes - 1);
             }
         }
