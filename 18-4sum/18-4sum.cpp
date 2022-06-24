@@ -6,8 +6,10 @@ public:
         
         vector<vector<int>> ans;
         for(int i = 0; i < n; i++){
+            // ignore duplicates
             if(i && nums[i-1] == nums[i])
                 continue;
+            
             auto res = threeSum(nums, i + 1, (long)target - nums[i]);
             for(auto &x: res){
                 x.insert(x.begin(), nums[i]);
