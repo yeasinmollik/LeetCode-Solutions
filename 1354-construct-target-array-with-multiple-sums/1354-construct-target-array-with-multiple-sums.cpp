@@ -1,3 +1,5 @@
+// disgusting problem. too many edge cases to consider
+
 class Solution {
 public:
     bool isPossible(vector<int>& target) {
