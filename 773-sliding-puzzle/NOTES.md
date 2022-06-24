@@ -1,1 +1,1 @@
-​
+Think of it as an undirected graph where each individual tile arrangement corresponds to a unique node. This problem now equals to finding the shortest path in an undirected graph, which can easily be done using a modified bfs!
