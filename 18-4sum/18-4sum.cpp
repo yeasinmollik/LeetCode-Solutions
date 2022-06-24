@@ -17,6 +17,7 @@ public:
         return ans;
     }
     
+    // simple modification of threeSum problem
     vector<vector<int>> threeSum(vector<int>& nums, int start, long tg) {
         int n = nums.size();
         
