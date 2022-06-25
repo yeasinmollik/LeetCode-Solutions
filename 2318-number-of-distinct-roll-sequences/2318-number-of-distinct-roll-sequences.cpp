@@ -8,11 +8,12 @@ public:
     int distinctSequences(int x) {
         n = x;
         memset(dp, -1, sizeof(dp));
-        return dfs(0, 0, 0);
+        return dfs(1, 0, 0);
     }
     
     int dfs(int i, int prev, int pre_prev){
-        if(i == n)
+        // sequence of length n has been found, so return 1
+        if(i == n + 1)
             return 1;
         
         if(dp[i][prev][pre_prev] != -1)
