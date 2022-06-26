@@ -7,10 +7,10 @@ public:
         for(int i = 1; i <= nums.size(); i++){
             sum = (sum + nums[i-1])%k;
             
-            if(sum == 0 && i >= 2)
+            if(sum == 0 && i > 1)
                return true;
             
-            if(idx_of_first_mod[sum] && (i - idx_of_first_mod[sum]) >= 2)
+            if(idx_of_first_mod[sum] && (i - idx_of_first_mod[sum]) > 1)
                 return true;
             
             if(!idx_of_first_mod[sum])
