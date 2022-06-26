@@ -12,7 +12,6 @@ public:
             ans += mod[sum];
             mod[sum]++;
         }
-        
         return ans;
     }
 };
