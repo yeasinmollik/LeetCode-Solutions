@@ -1,38 +1,19 @@
 class Solution {
 public:
+    int dp[40010][3];
     int maxSumDivThree(vector<int>& nums) {
-        int n = nums.size();
+        memset(dp, -1, sizeof(dp));
+        return getMax(nums.size() - 1, 0, nums);
+    }
+    
+    int getMax(int idx, int mod, vector<int> &nums){
+        //we must have mod=0 after at the end otherwise return INT_MIN
+        if(idx == -1)
+            return (mod == 0? 0 : INT_MIN);
         
-        vector<int> mod[3];
-        int sum = 0;
-        for(int &x: nums){
-            sum += x;
-            mod[x % 3].emplace_back(x);
-        }
+        if(dp[idx][mod] != -1)
+            return dp[idx][mod];
         
-        for(int i = 0; i < 3; i++)
-            sort(mod[i].begin(), mod[i].end());
-        
-        int ans;
-        int md = sum % 3;
-        
-        if(md == 1) {
-            ans = INT_MIN;
-            if(mod[1].size())
-                ans = max(ans, sum - mod[1][0]);
-            if(mod[2].size() >= 2)
-                ans = max(ans, sum - mod[2][0] - mod[2][1]);
-        }
-        else if(md == 2){
-            ans = INT_MIN;
-            if(mod[2].size())
-                ans = max(ans, sum - mod[2][0]);
-            if(mod[1].size() >= 2)
-                ans = max(ans, sum - mod[1][0] - mod[1][1]);
-        }
-        else
-            ans = sum;
-        
-        return ans;
+        return dp[idx][mod] = max(nums[idx] + getMax(idx - 1, (mod - (nums[idx] % 3) + 3) % 3, nums), getMax(idx - 1, mod, nums));
     }
 };
