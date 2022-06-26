@@ -7,7 +7,7 @@ public:
         int sum = 0;
         for(int &x: nums){
             sum += x;
-            mod[x % 3].push_back(x);
+            mod[x % 3].emplace_back(x);
         }
         
         for(int i = 0; i < 3; i++)
