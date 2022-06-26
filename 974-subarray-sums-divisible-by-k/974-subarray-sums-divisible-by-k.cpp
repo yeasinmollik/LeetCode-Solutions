@@ -6,10 +6,11 @@ public:
         
         int sum = 0, ans = 0;
         for(int &x: nums){
-            sum += x;
-            int m = ((sum % k) + k) % k; //handles when m < 0
-            ans += mod[m];
-            mod[m]++;
+            sum = (sum + x) % k;
+            if(sum < 0)
+                sum += k;
+            ans += mod[sum];
+            mod[sum]++;
         }
         
         return ans;
