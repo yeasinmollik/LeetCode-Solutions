@@ -4,12 +4,12 @@ public:
     
     vector<int> maximumBobPoints(int numArrows, vector<int>& aliceArrows) {
         memset(dp, -1, sizeof(dp));
-        //cout << solve(0, numArrows, aliceArrows) << endl;
         
         int arrows = numArrows, rem_arrows = numArrows;
         vector<int> bobArrows(12);
         for(int i = 0; i < 12; i++){
-            if(solve(i, arrows, aliceArrows) != solve(i + 1, arrows, aliceArrows)){ // means that i'th target was choosen
+            // means bob choose the i'th target
+            if(solve(i, arrows, aliceArrows) != solve(i + 1, arrows, aliceArrows)){
                 bobArrows[i] = aliceArrows[i] + 1;
                 arrows -= bobArrows[i];
                 rem_arrows -= bobArrows[i];
@@ -23,7 +23,7 @@ public:
     }
     
     int solve(int idx, int arrows, vector<int>& aliceArrows){
-        if(idx == 12 || arrows <= 0)
+        if(idx == 12 || arrows == 0)
             return 0;
         
         if(dp[idx][arrows] != -1)
