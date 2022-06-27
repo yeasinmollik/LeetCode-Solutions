@@ -21,7 +21,6 @@ public:
                 dq.pop_back();
             dq.push_back(r);
         }
-        
         return max_value;
     }
 };
