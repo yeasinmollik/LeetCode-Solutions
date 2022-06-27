@@ -1,32 +1,37 @@
 class Solution {
 public:
+    int dp[13][100010];
+    
     vector<int> maximumBobPoints(int numArrows, vector<int>& aliceArrows) {
-        int max_points = 0;
-        int res = 0;
+        memset(dp, -1, sizeof(dp));
+        //cout << solve(0, numArrows, aliceArrows) << endl;
         
-        for(int i = 0; i < (1 << 12); i++){
-            int arrows = 0, points = 0;
-            for(int j = 0; j < 12; j++){
-                if(i & (1 << j)){
-                    arrows += aliceArrows[j] + 1;
-                    if(arrows > numArrows)
-                        break;
-                    points += j;
-                }
-            }
-            if(arrows <= numArrows && points > max_points)
-                res = i, max_points = points;
-        }
-        
+        int arrows = numArrows, rem_arrows = numArrows;
         vector<int> bobArrows(12);
-        int arrows = 0;
         for(int i = 0; i < 12; i++){
-            if(res & (1 << i))
-                arrows += bobArrows[i] = aliceArrows[i] + 1;
+            if(solve(i, arrows, aliceArrows) != solve(i + 1, arrows, aliceArrows)){ // means that i'th target was choosen
+                bobArrows[i] = aliceArrows[i] + 1;
+                arrows -= bobArrows[i];
+                rem_arrows -= bobArrows[i];
+            }
         }
-        // must use leftover arrows. so, distributed them to 0'th target 
-        bobArrows[0] += numArrows - arrows;
+        
+        // must use all arrows. So, putting all remaining arrows at 0'th target.
+        bobArrows[0] += rem_arrows;
         
         return bobArrows;
+    }
+    
+    int solve(int idx, int arrows, vector<int>& aliceArrows){
+        if(idx == 12 || arrows <= 0)
+            return 0;
+        
+        if(dp[idx][arrows] != -1)
+            return dp[idx][arrows];
+        
+        int without = solve(idx + 1, arrows, aliceArrows);
+        int with = (arrows >= aliceArrows[idx]+1 ? idx + solve(idx + 1, arrows - aliceArrows[idx]-1, aliceArrows) : 0);
+        
+        return dp[idx][arrows] = max(with, without);
     }
 };
