@@ -1,7 +1,7 @@
 class Solution {
 public:    
     int openLock(vector<string>& deadends, string target) {
-        unordered_map<string, bool> de;
+        map<string, bool> de;
         for(auto &s: deadends)
             de[s] = true;
         
