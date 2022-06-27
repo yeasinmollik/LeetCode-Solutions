@@ -24,12 +24,12 @@ public:
             
             for(int i = 0; i < 4; i++){
                 curr[i] = (curr[i] - '0' - 1 + 10) % 10 + '0';
-                if(!de[curr] && !visited[curr])
+                if(!de.count(curr) && !visited.count(curr))
                     q.push({curr, turns + 1}), visited[curr] = true;
                 curr[i] = (curr[i] - '0' + 1 + 10) % 10 + '0';
                 
                 curr[i] = (curr[i] - '0' + 1 + 10) % 10 + '0';
-                if(!de[curr] && !visited[curr])
+                if(!de.count(curr) && !visited.count(curr))
                     q.push({curr, turns + 1}), visited[curr] = true;
                 curr[i] = (curr[i] - '0' - 1 + 10) % 10 + '0';
             }
