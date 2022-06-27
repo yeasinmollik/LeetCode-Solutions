@@ -17,7 +17,8 @@ public:
                 max_value = max(max_value, points[r][0] + points[r][1] + points[dq.front()][1] - points[dq.front()][0]);
             
             // removing points having y - x values less than points[r]
-            while(!dq.empty() && points[dq.back()][1] - points[dq.back()][0] < points[r][1] - points[r][0])
+            int y_minus_x = points[r][1] - points[r][0];
+            while(!dq.empty() && points[dq.back()][1] - points[dq.back()][0] < y_minus_x)
                 dq.pop_back();
             dq.push_back(r);
         }
