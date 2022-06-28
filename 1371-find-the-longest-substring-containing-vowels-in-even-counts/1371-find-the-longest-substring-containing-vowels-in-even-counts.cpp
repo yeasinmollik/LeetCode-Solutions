@@ -7,7 +7,7 @@ public:
         bool vowel[26] = {};
         vowel[0] = vowel[4] = vowel[8] = vowel[14] = vowel[20] = true;
         
-        unordered_map<int, int> left_most;
+        map<int, int> left_most;
         int parity = 0;
         left_most[parity] = 0;
         int ans = 0;
