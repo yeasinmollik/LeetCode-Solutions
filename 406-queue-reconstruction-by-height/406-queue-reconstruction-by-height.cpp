@@ -12,8 +12,7 @@ public:
         
         vector<vector<int>> ans;
         for(auto &p: people)
-            ans.insert(ans.begin() + p[1], p);
-        
+            ans.insert(ans.begin() + p[1], p);   
         return ans;
     }
 };
