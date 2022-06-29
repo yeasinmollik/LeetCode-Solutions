@@ -2,7 +2,6 @@ class Solution {
 public:
     string reorganizeString(string s) {
         unordered_map<char, int> m;
-        sort(s.begin(), s.end());
         for(char &c: s)
             m[c]++;
         
@@ -10,12 +9,8 @@ public:
         for(auto &x: m)
             v.push_back({x.second, x.first});
         sort(v.begin(), v.end(), greater<pair<int, char>>());
-        // for(auto &x: v)
-        //     cout << x.first << " " << x.second << endl;
         
-        int needed = v[0].first - 1;
-        int rem = s.size() - v[0].first;
-        if(needed > rem)
+        if((v[0].first - 1) > (s.size() - v[0].first))
             return "";
         
         vector<string> vs(v[0].first);
@@ -23,9 +18,11 @@ public:
         for(int i = 0; i < vs.size(); i++)
             vs[i].push_back(v[0].second);
         
-        for(int i = 0; i < s.size(); i++){
-            if(s[i]!=v[0].second)
-                vs[i % v[0].first].push_back(s[i]);
+        int curr = 0;
+        for(int i = 1; i < v.size(); i++) {
+            for(int j = 0; j < v[i].first; j++, curr++){
+                vs[curr % vs.size()].push_back(v[i].second);
+            }
         }
         
         string res;
