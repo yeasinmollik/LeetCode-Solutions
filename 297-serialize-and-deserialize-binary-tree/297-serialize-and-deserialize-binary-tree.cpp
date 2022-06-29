@@ -42,15 +42,15 @@ public:
         return splited;
     }
     
-    TreeNode* deserializeHelper(vector<int> &vals, int &idx){
-        if(vals[idx] == -9999) {
+    TreeNode* deserializeHelper(vector<int> &v, int &idx){
+        if(v[idx] == -9999){
             idx++;
             return NULL;
         }
         
-        TreeNode* root = new TreeNode(vals[idx++]);
-        root->left = deserializeHelper(vals, idx);
-        root->right = deserializeHelper(vals, idx);
+        TreeNode* root = new TreeNode(v[idx++]);
+        root->left = deserializeHelper(v, idx);
+        root->right = deserializeHelper(v, idx);
         
         return root;
     }
