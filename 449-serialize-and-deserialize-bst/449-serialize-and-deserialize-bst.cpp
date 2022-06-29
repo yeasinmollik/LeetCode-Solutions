@@ -9,7 +9,6 @@
  */
 class Codec {
 public:
-    
     void serializeHelper(TreeNode* root, string &s){
         if(root == NULL){
             s += "-1 ";
