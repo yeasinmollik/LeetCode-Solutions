@@ -1,2 +1,2 @@
 **Intuition is**: Incrementing $n - 1$ numbers by 1 is same as decrementing the rest $1$ number by 1. And this makes the problem way simpler! Now we just have to make all array numbers equal to the minimum number. If $mn$ is the minimum number, then the answer simply is:
-$\sum_{i = 1}^{n}{nums[i] - mn}$
+$$\sum_{i = 1}^{n}{nums[i] - mn}$$
