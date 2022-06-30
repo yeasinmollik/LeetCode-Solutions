@@ -9,7 +9,8 @@ public:
             ans += nums[r] - nums[l];
             l++;
             r--;
-        }        
+        }
+        
         return ans;
     }
 };
