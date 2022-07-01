@@ -1,10 +1,11 @@
 class Solution {
 public:
     vector<vector<int>> adj;
-    bool vis[100010] = {};
+    vector<bool> vis;
     
     string smallestStringWithSwaps(string s, vector<vector<int>>& pairs) {
-        int n = s.size(), m = pairs.size();
+        int n = s.size();
+        vis.resize(n);
         adj.resize(n);
         
         for(auto &p: pairs)
