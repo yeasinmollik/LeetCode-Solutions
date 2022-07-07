@@ -24,8 +24,7 @@ public:
                     minW = currW, ml = l; 
             }   
             r++;
-        }
-        
+        }  
         return minW == INT_MAX? "" : s.substr(ml, minW);
     }
     
