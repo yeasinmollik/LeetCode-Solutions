@@ -5,12 +5,7 @@ public:
     bool isInterleave(string s1, string s2, string s3) {
         if(s1.size() + s2.size() != s3.size())
             return false;
-        
-        if(s1.empty() && s2 == s3)
-            return true;
-        if(s2.empty() && s1 == s3)
-            return true;
-        
+
         memset(dp, -1, sizeof(dp)); 
         return solve(s1, s2, s3, 0, 0, 0, true) || solve(s1, s2, s3, 0, 0, 0, false);
     }
