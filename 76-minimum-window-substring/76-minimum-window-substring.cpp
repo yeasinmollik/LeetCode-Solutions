@@ -2,8 +2,9 @@ class Solution {
 public:
     string minWindow(string s, string t) {
         int req[123] = {};
+        unordered_set<char> chars;
         for(char &c: t)
-            req[c]++;
+            req[c]++, chars.insert(c);
         
         int have[123] = {};
         int l = 0, r = 0, n = s.size();
@@ -11,7 +12,7 @@ public:
         
         while(r < n){
             have[s[r]]++;
-            if(okay(have, req)){
+            if(okay(have, req, chars)){
                 while(l < r) {
                     if(have[s[l]] == req[s[l]])
                         break;
@@ -28,9 +29,9 @@ public:
         return minW == INT_MAX? "" : s.substr(ml, minW);
     }
     
-    bool okay(int have[], int req[]){
-        for(int i = 65; i < 123; i++)
-            if(have[i] < req[i])
+    bool okay(int have[], int req[], unordered_set<char> &chars){
+        for(auto &c: chars)
+            if(have[c] < req[c])
                 return false;
         return true;
     }
