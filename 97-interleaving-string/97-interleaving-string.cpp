@@ -17,8 +17,7 @@ public:
         if(dp[i][j][k][first] != -1)
             return dp[i][j][k][first];
         
-        bool solved = false;
-        
+        bool solved = false; 
         if(first){
             for(int i1 = i, k1 = k; i1 < s1.size() && !solved; i1++, k1++){
                 if(s1[i1] == s3[k1])
