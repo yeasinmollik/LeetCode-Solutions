@@ -11,8 +11,7 @@
 class Solution {
 public:
     ListNode* sortList(ListNode* head) {
-        int zero = 1e5;
-        
+        int zero = 1e5; 
         int cnt[200010] = {};
         auto curr = head;
         while(curr){
