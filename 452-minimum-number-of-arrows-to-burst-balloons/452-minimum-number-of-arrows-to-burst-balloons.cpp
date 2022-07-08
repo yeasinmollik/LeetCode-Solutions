@@ -6,7 +6,8 @@ public:
     
     int findMinArrowShots(vector<vector<int>>& points) {
         int n = points.size();       
-        if(n == 1)  return 1;
+        if(n == 1)  
+            return 1;
         
         //sorting base on the inceasing starting value
         sort(points.begin(), points.end(), cmp);
