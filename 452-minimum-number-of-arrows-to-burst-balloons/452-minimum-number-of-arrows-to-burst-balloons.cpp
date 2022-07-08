@@ -1,11 +1,15 @@
 class Solution {
 public:
+    static bool cmp(vector<int> &a, vector<int> &b){
+        return a[0] < b[0];
+    }
+    
     int findMinArrowShots(vector<vector<int>>& points) {
         if(points.size() == 1)
             return 1;
         
         int n = points.size();       
-        sort(points.begin(), points.end()); 
+        sort(points.begin(), points.end(), cmp); 
         points.push_back({INT_MAX, INT_MIN});  
         int shots = 0;
         auto prev = points.front();
