@@ -10,15 +10,15 @@ public:
         int shots = 0;
         auto prev = points.front();
         for(int i = 1; i <= n; i++){
-            if(overlaps(prev, points[i]))
-                prev = {points[i][0], min(prev[1], points[i][1])};
-            else 
+            if(dontOverlap(prev, points[i])) 
                 shots++, prev = points[i];
+            else
+                prev = {points[i][0], min(prev[1], points[i][1])};
         }
         return shots;
     }
     
-    bool overlaps(vector<int> &a, vector<int> &b){
-        return !(b[0]  > a[1] || b[1] < a[0]);
+    bool dontOverlap(vector<int> &a, vector<int> &b){
+        return b[0]  > a[1] || b[1] < a[0];
     }
 };
