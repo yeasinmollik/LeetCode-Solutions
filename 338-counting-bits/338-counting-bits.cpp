@@ -7,7 +7,7 @@ public:
             int num = i, cnt = 0;
             while(num){
                 cnt += num & 1;
-                num = num>>1;
+                num >>= 1;
             }
             ans.emplace_back(cnt);
         }
