@@ -4,6 +4,7 @@ public:
         unordered_map<int, int> idx;
         for(int i = 0; i < inorder.size(); i++)
             idx[inorder[i]] = i;
+        
         TreeNode* root;
         int i = 0;
         buildTree(root, preorder,i, idx, 0, inorder.size() - 1, inorder);
