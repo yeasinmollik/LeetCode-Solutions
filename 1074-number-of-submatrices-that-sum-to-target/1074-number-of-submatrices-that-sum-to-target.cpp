@@ -18,7 +18,8 @@ public:
                 int sum = 0;
                 for(int k = 1; k <= n; k++){
                     sum += rsum[k][j] - rsum[k][i-1];
-                    ans += cnt[sum - target];
+                    if(cnt.find(sum-target) != cnt.end())
+                        ans += cnt[sum - target];
                     cnt[sum]++;
                 }
             }
