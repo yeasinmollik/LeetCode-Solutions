@@ -15,13 +15,13 @@ public:
         if (k == 1) 
             return true;
         
-        if(i >= nums.size())
+        if(i >= n) 
             return false;
         
         if (curr_sum == target) 
             return backtrack(nums, visited, target, 0, 0, k-1);
         
-        for (int j = i; j < nums.size(); j++) {
+        for (int j = i; j < n; j++) {
             if (visited[j] || curr_sum + nums[j] > target) continue;
             
             visited[j] = true;
