@@ -6,7 +6,6 @@ public:
         if (nums.size() < k || sum % k) return false;
         
         vector<bool>visited(nums.size(), false);
-        sort(nums.begin(), nums.end(), greater<int>());
         return backtrack(nums, visited, sum / k, 0, 0, k);
     }
     
