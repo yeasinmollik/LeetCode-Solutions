@@ -14,11 +14,15 @@ public:
     {
             if(k==1)
                 return true;
+            
             if(start>=nums.size()) //This line is important to avoid tle
                return false;
+
+         
             if(curr==sum)
                     return is_possible(nums,0,sum,k-1,0,vis);
-
+         
+         
         for(int i=start;i<nums.size();i++)
         {
             if(vis[i] || nums[i]+curr>sum)
