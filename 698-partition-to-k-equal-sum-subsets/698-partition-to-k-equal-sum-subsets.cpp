@@ -10,7 +10,7 @@ public:
     }
     
     bool backtrack(vector<int>& nums,vector<bool> &visited, int target, int curr_sum, int i, int k) {
-        if(i >= nums.size())
+        if(i == nums.size())
             return false;
         
         if (k == 1) 
