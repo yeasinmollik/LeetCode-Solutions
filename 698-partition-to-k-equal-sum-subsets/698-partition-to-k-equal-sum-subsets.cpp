@@ -1,6 +1,8 @@
 class Solution {
 public:
+    int n;
     bool canPartitionKSubsets(vector<int>& nums, int k) {
+        n = nums.size();
         int sum = 0;
         sum = accumulate(nums.begin(), nums.end(), sum);
         if (nums.size() < k || sum % k) return false;
