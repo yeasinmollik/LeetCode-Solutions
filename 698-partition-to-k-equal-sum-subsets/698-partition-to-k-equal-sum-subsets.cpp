@@ -20,10 +20,13 @@ public:
 
    // put #n item of ns into some bucket to meet target
    bool put( int n ) {
+       if(n == ns.size())
+           return true;
+       
        for( int i = 0; i < bucket.size(); ++i ) {
            if( bucket[i] + ns[n] > target ) continue; // try next bucket
            bucket[i] += ns[n]; // put it in!
-           if( n == ns.size() - 1 ) return true; // all items in bucket, no overflow
+           
            if( put( n + 1 ) ) return true; // move on to next item
            else { // no solution = wrong bucket
                bucket[i] -= ns[n]; // take it out
