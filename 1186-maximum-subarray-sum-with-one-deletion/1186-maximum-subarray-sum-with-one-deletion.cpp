@@ -1,9 +1,7 @@
 class Solution {
 public:
-    int n;
-    
     int maximumSum(vector<int>& arr) {
-        n = arr.size();    
+        int n = arr.size();    
         vector<int> ends(n);
         
         int sum = 0;
