@@ -14,8 +14,10 @@ public:
         if(tot % k != 0)
             return false;
      
-        vector<int> buckets(k, 0);
+        // starting with the large numbers contributes to few number of recursions.
+        sort(nums.begin(), nums.end(), greater<int>());
         
+        vector<int> buckets(k, 0);
         return solve(nums, buckets, k, tot / k, 0);
     }
     
