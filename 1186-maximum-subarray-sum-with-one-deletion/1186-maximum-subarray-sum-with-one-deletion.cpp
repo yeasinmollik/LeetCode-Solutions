@@ -27,7 +27,6 @@ public:
         
         for(int i = 1; i + 1 < n; i++)
             mxx = max(mxx, ends[i-1] + starts[i + 1]);
-        
         return mxx;
     }
 };
