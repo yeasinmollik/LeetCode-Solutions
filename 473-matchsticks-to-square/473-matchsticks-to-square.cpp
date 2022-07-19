@@ -1,39 +1,49 @@
 class Solution {
 public:
+    int n;
+    
     bool makesquare(vector<int>& matchsticks) {
+        n = matchsticks.size(); 
         return canPartitionKSubsets(matchsticks, 4);
     }
     
     bool canPartitionKSubsets(vector<int>& nums, int k) {
-        int sum = 0;
-        sum = accumulate(nums.begin(), nums.end(), sum);
-        if (nums.size() < k || sum % k) return false;
-        
-        vector<bool> visited(nums.size(), false);
-        int univisited = nums.size();
-        return backtrack(nums, visited, sum / k, 0, 0, k, univisited);
-    }
-    
-    bool backtrack(vector<int>& nums, vector<bool> &visited, int target, int curr_sum, int i, int k, int &unvisited) {
-        if (k == 1) 
-            return true;
-        
-        if(unvisited == 0 || i >= nums.size())
+        n = nums.size();
+        if(n < k)
             return false;
         
-        if (curr_sum == target) 
-            return backtrack(nums, visited, target, 0, 0, k-1, unvisited);
+        int tot = 0;
+        for(int &x: nums)
+            tot += x;
         
-        for (int j = i; j < nums.size(); j++) {
-            if (visited[j] || curr_sum + nums[j] > target) continue;
+        if(tot % k != 0)
+            return false;
+     
+        // starting with the larger numbers contributes to few number of recursions.
+        sort(nums.begin(), nums.end(), greater<int>());
+        
+        vector<int> buckets(k, 0);
+        return put(nums, buckets, k, tot / k, 0);
+    }
+    
+    bool put(vector<int> &nums, vector<int> &buckets, int k, int target, int idx){
+        // successfully put all n numbers into k buckets
+        if(idx == n)
+            return true;
+        
+        for(int i = 0; i < k; i++){
+            if(buckets[i] + nums[idx] > target)
+                continue;
             
-            visited[j] = true;
-            unvisited--;
-            if (backtrack(nums, visited, target, curr_sum + nums[j], j+1, k, unvisited)) return true;
-            visited[j] = false;
-            unvisited++;
+            buckets[i] += nums[idx];
+            if(put(nums, buckets, k, target, idx + 1) == true)
+                return true; 
+            buckets[i] -= nums[idx];
+            
+            // no need to try other empty bucket
+            if(buckets[i] == 0) 
+                return false;
         }
-        
         return false;
     }
 };
