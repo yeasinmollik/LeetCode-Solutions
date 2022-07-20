@@ -4,20 +4,16 @@ public:
         stack<char> a, b;
         
         for(char &c: s){
-            if(c == '#') {
-                if(!a.empty())
-                    a.pop();
-            }
-            else
+            if(c == '#' && !a.empty()) 
+                a.pop();
+            else if(c != '#')
                 a.push(c);
         }
         
         for(char &c: t){
-            if(c == '#'){
-                if(!b.empty())
-                    b.pop();
-            }
-            else
+            if(c == '#' && !b.empty())
+                b.pop();
+            else if(c != '#')
                 b.push(c);
         }
         
