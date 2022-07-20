@@ -9,17 +9,16 @@ public:
         for(int &x: stones)
             tot += x;
         
-        vector<bool> last(tot + 1, false);
+        bool last[3010] = {}, curr[3010] = {};
         
         last[0] = true;
         for(int i = 1; i <= n; i++){
-            vector<bool> curr(tot + 1);
             for(int j = 0; j <= tot; j++){
                 curr[j] = last[j];
                 if(j >= stones[i-1])
                     curr[j] = curr[j] | last[j - stones[i-1]];
             }
-            last = curr;
+            copy(begin(curr), end(curr), begin(last));
         }
         
         for(int i = tot/2; i >= 1; i--)
