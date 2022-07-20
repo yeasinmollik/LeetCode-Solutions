@@ -24,7 +24,7 @@ public:
         
         for(int i = tot/2; i >= 1; i--)
             if(last[i])
-                return tot - i - i;
+                return tot - 2*i;
         
         return 0;
     }
