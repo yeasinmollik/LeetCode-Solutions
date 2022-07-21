@@ -3,7 +3,6 @@ public:
     int n;
     vector<int> adj[1010];
     int dp[1010];
-    bool vis[1010] = {};
     int next[1010] = {};
     
     vector<int> largestDivisibleSubset(vector<int>& nums) {
