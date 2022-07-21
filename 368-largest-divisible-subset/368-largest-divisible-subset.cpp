@@ -1,46 +1,43 @@
 class Solution {
 public:
-    int n;
     vector<int> adj[1010];
     int dp[1010];
-    int next[1010] = {};
+    int next[1010];
     
     vector<int> largestDivisibleSubset(vector<int>& nums) {
-        n = nums.size();
         sort(nums.begin(), nums.end());
         
-        for(int i = 0; i < n; i++)
-            for(int j = i + 1; j < n; j++)
-                if(nums[j] % nums[i] == 0)
-                    adj[i].emplace_back(j);
-                    
+        for(int i = 0; i < nums.size(); i++)
+            for(int j = 0; j < i; j++)
+                if(nums[i] % nums[j] == 0)
+                    adj[j].emplace_back(i);
+        
         memset(dp, -1, sizeof(dp));
         memset(next, -1, sizeof(next));
-        
-        int mx = 1, first = 0;
-        for(int i = 0; i < n; i++){
-            if(mx < solve(i))
-                mx = solve(i), first = i;
+        int mxSubset = 1, first = 0;
+        for(int i = 0; i < nums.size(); i++){
+            int gt = get(i);
+            if(gt > mxSubset)
+                mxSubset = gt, first = i;
         }
         
-        vector<int> ans = {nums[first]};
-        while(next[first]!=-1)
-            ans.emplace_back(nums[next[first]]), first = next[first];
-
-        return ans;
+        vector<int> subset = {nums[first]};
+        while(next[first] != -1)
+            subset.emplace_back(nums[next[first]]), first = next[first];
+        
+        return subset;
     }
     
-    int solve(int u){
-        if(dp[u]!=-1)
+    int get(int u){
+        if(dp[u] != -1)
             return dp[u];
         
         dp[u] = 1;
         for(int &v: adj[u]){
-            int slv = solve(v) + 1;
-            if(slv > dp[u])
-                dp[u] = slv, next[u] = v;            
+            int gt = get(v) + 1;
+            if(gt > dp[u])
+                dp[u] = gt, next[u] = v;
         }
-        
         return dp[u];
     }
 };
