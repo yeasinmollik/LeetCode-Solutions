@@ -18,9 +18,9 @@ public:
         auto prev = head;
         while(first)
             first = first->next, prev = second, second = second->next;
-        
-        if(second == head) // means we are asked to remove the 1st node
-            head =  head->next;
+    
+        if(second == head) // first node has to be removed
+            head = head->next;
         else
             prev->next = second->next;
         return head;
