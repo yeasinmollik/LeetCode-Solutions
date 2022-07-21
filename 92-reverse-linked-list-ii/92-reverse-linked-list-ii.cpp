@@ -16,9 +16,7 @@ public:
             prevLeft->next = prev;
         else
             head = prev;
-        
         first->next = curr;
-        
         return head;
     }
 };
