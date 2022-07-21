@@ -1,6 +1,6 @@
 class Solution {
 public:
-    vector<int> adj[1010];
+    vector<short> adj[1010];
     int dp[1010];
     int next[1010];
     
@@ -33,7 +33,7 @@ public:
             return dp[u];
         
         dp[u] = 1;
-        for(int &v: adj[u]){
+        for(short &v: adj[u]){
             int gt = get(v) + 1;
             if(gt > dp[u])
                 dp[u] = gt, next[u] = v;
