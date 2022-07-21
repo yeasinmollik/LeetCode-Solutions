@@ -1,13 +1,14 @@
 class Solution {
 public:
-    vector<short> adj[1010];
+    vector<int> adj[1010];
     int dp[1010];
     int next[1010];
     
     vector<int> largestDivisibleSubset(vector<int>& nums) {
+        int n = nums.size();
         sort(nums.begin(), nums.end());
         
-        for(int i = 0; i < nums.size(); i++)
+        for(int i = 0; i < n; i++)
             for(int j = 0; j < i; j++)
                 if(nums[i] % nums[j] == 0)
                     adj[j].emplace_back(i);
@@ -15,7 +16,7 @@ public:
         memset(dp, -1, sizeof(dp));
         memset(next, -1, sizeof(next));
         int mxSubset = 1, first = 0;
-        for(int i = 0; i < nums.size(); i++){
+        for(int i = 0; i < n; i++){
             int gt = get(i);
             if(gt > mxSubset)
                 mxSubset = gt, first = i;
@@ -33,7 +34,7 @@ public:
             return dp[u];
         
         dp[u] = 1;
-        for(short &v: adj[u]){
+        for(int &v: adj[u]){
             int gt = get(v) + 1;
             if(gt > dp[u])
                 dp[u] = gt, next[u] = v;
