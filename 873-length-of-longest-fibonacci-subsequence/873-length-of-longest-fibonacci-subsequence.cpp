@@ -2,7 +2,7 @@ class Solution {
 public:
     int n;
     unordered_map<int, int> idx;
-    int dp[1010][1010];
+    short dp[1010][1010];
     
     int lenLongestFibSubseq(vector<int>& arr) {
         n = arr.size();
