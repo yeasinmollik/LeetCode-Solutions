@@ -20,8 +20,7 @@ public:
             
             if(valid)
                 ans.emplace_back(buildParenthesis(i, m));
-        }
-        
+        }   
         return ans;
     }
     
