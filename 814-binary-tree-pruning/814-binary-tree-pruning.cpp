@@ -23,8 +23,7 @@ public:
         if(pruneLeft)
             root->left = NULL;
         if(pruneRight)
-            root->right = NULL;
-        
+            root->right = NULL; 
         return (root->val == 0 && pruneLeft && pruneRight);
     }
 };
