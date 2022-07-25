@@ -3,7 +3,7 @@ public:
     string reverseParentheses(string s) {
         stack<string> st;
         string t = "";
-        for(char &c: s){
+        for(char c: s){
             if(c == '('){
                 st.push(t);
                 t = "";
