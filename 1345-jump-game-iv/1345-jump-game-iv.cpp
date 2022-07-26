@@ -2,7 +2,7 @@ class Solution {
 public:
     int minJumps(vector<int>& arr) {
         int n = arr.size();
-        unordered_map<int, set<int>> m;
+        unordered_map<int, unordered_set<int>> m;
         for(int i = 0; i < arr.size(); i++)
             m[arr[i]].insert(i);
         
