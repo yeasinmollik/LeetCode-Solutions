@@ -8,7 +8,7 @@ public:
         
         queue<pair<int, int>> q; // <index, jumps>
         q.push({0, 0});
-        bool vis[50010] = {};
+        vector<bool> vis(n);
         vis[0] = true;
         m[arr[0]].erase(0);
         
