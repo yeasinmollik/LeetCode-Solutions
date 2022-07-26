@@ -2,7 +2,7 @@ class Solution {
 public:
     int constrainedSubsetSum(vector<int>& nums, int k) {
         int n = nums.size();
-        vector<int> dp(n);
+        int dp[100010];
         
         deque<int> dq;
         int maxSubsetSum = INT_MIN;
