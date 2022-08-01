@@ -1,7 +1,7 @@
 class Solution {
 public:
     int uniquePaths(int m, int n) {
-        int dp[110][110] = {};
+        int dp[101][101];
         dp[1][1] = 1;
         for(int i = 1; i <= m; i++)
             dp[i][1] = 1;
