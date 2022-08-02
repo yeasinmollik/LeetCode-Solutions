@@ -1,39 +1,25 @@
+typedef tuple<int, int, int> tupl;
+
 class Solution {
 public:
     int n, m, inf = 1e9 + 7;
     int kthSmallest(vector<vector<int>>& matrix, int k) {
         n = matrix.size(), m = matrix[0].size();
-        set<pair<int, int>> s;        
-        if(n != 1)
-            s.insert({1, 0});
-        if(m != 1)
-            s.insert({0, 1});
-        int cnt = 1, ans = matrix[0][0];
-        int mxsz = 1;
-        while(cnt < k){
-            int mn = inf, i, j;
-            for(auto &p: s){
-                if(mn > matrix[p.first][p.second]){
-                    mn = matrix[p.first][p.second];
-                    i = p.first, j = p.second;
-                }
-            }
-            if(mn != inf){
-                ans = mn;
-                s.erase({i, j});
-                if(valid(i + 1, j))
-                    s.insert({i + 1, j});
-                if(valid(i, j + 1))
-                    s.insert({i, j + 1});
-            }
-            cnt++;
-            mxsz = max(mxsz, (int)s.size());
+        int cnt = 0, ans;
+        
+        priority_queue<tupl, vector<tupl>, greater<tupl>> pq;
+        for(int i = 0; i < m && i < k; i++){
+            pq.push({matrix[0][i], 0, i});
         }
-        cout << mxsz << endl;
+        for(int l = 0; l < k; l++){
+            auto[val, i, j] = pq.top();
+            pq.pop();
+            
+            ans = val;
+            if(i + 1 < n)
+                pq.push({matrix[i+1][j], i + 1, j});
+            cnt++;
+        }
         return ans;
-    }
-    
-    bool valid(int i, int j){
-        return i >= 0 && i < n && j >= 0 && j < m;
     }
 };
