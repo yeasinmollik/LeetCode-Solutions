@@ -20,9 +20,9 @@ public:
             if(mn != inf){
                 ans = mn;
                 s.erase({i, j});
-                if(valid(i + 1, j) && s.find({i + 1, j}) == s.end())
+                if(valid(i + 1, j))
                     s.insert({i + 1, j});
-                if(valid(i, j + 1) && s.find({i, j + 1}) == s.end())
+                if(valid(i, j + 1))
                     s.insert({i, j + 1});
             }
             cnt++;
