@@ -9,6 +9,7 @@ public:
         if(m != 1)
             s.insert({0, 1});
         int cnt = 1, ans = matrix[0][0];
+        int mxsz = 1;
         while(cnt < k){
             int mn = inf, i, j;
             for(auto &p: s){
@@ -26,7 +27,9 @@ public:
                     s.insert({i, j + 1});
             }
             cnt++;
+            mxsz = max(mxsz, (int)s.size());
         }
+        cout << mxsz << endl;
         return ans;
     }
     
