@@ -14,11 +14,9 @@ public:
         for(int l = 0; l < k; l++){
             auto[val, i, j] = pq.top();
             pq.pop();
-            
             ans = val;
             if(i + 1 < n)
                 pq.push({matrix[i+1][j], i + 1, j});
-            cnt++;
         }
         return ans;
     }
