@@ -1,13 +1,3 @@
-/**
- * Definition for singly-linked list.
- * struct ListNode {
- *     int val;
- *     ListNode *next;
- *     ListNode() : val(0), next(nullptr) {}
- *     ListNode(int x) : val(x), next(nullptr) {}
- *     ListNode(int x, ListNode *next) : val(x), next(next) {}
- * };
- */
 class Solution {
 public:
     void reorderList(ListNode* head) {
@@ -24,7 +14,7 @@ public:
         }
         
         
-        // now reverse the linked list starting from middle node to the end. 
+        //Now reverse the linked list starting from middle node to the end. 
         prev->next = NULL;
         prev = NULL;
         int cnt = 0;
@@ -35,9 +25,10 @@ public:
             slow = next;
             cnt++;
         }
+        //head of the reversed linked list
         auto head1 = prev;
         
-        //now merge two linked lists with nodes head and head1
+        //Finally, merge those two linked lists starting with head and head1
         prev = NULL;
         while(cnt--){
             if(head){
