@@ -9,6 +9,7 @@ public:
     int numFactoredBinaryTrees(vector<int>& arr) {
         n = arr.size();
         sort(arr.begin(), arr.end());
+        
         for(int i = 0; i < n; i++)
             idx[arr[i]] = i;
         
