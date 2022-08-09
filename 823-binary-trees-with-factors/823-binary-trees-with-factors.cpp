@@ -30,7 +30,7 @@ public:
             return dp[x];
 
         long long tot = 1;
-        for(auto d: divs[x]){
+        for(auto &d: divs[x]){
             if(d.first != d.second)
                 tot = (tot + (2 * (get(d.first) * get(d.second)) % mod) % mod)%mod;
             else
