@@ -21,9 +21,9 @@ public:
             return dp[idx][k];
         
         double sum = 0, avg = ninf;
-        for(int i = idx; i < n; i++){
+        for(int i = idx, cnt = 1; i < n; i++, cnt++){
             sum += nums[i];
-            avg = max(avg, sum / (i - idx + 1) + getMaxAvg(i + 1, k-1, nums));
+            avg = max(avg, sum / cnt + getMaxAvg(i + 1, k-1, nums));
         }
         
         done[idx][k] = true;
