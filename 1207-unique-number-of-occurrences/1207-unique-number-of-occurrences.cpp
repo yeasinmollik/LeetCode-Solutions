@@ -1,8 +1,7 @@
 class Solution {
 public:
     bool uniqueOccurrences(vector<int>& arr) {
-        int n = arr.size();
-        
+        int n = arr.size();  
         unordered_map<int, int> cnt, ccnt;
         for(int i = 0; i < n; i++){
             cnt[arr[i]]++;    
