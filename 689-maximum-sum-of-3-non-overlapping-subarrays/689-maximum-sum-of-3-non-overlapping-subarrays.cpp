@@ -4,7 +4,7 @@ class Solution {
 public:
     vector<int> maxSumOfThreeSubarrays(vector<int>& nums, int k) {
         int n = nums.size();
-        int ps[20010] = {}, ss[20010] = {};
+        vector<int> ps(n + 2), ss(n + 2);
         for(int i = 1, j = n; i <= n; i++, j--) {
             ps[i] = ps[i-1] + nums[i-1];
             ss[j] = ss[j + 1] + nums[j-1];
