@@ -5,14 +5,14 @@ class Solution {
 public:
     vector<int> maxSumOfThreeSubarrays(vector<int>& nums, int k) {
         int n = nums.size();
-        vector<int> ps(n + 2), ss(n + 2);
+        int ps[20010] = {}, ss[20010] = {};
         for(int i = 1, j = n; i <= n; i++, j--) {
             ps[i] = ps[i-1] + nums[i-1];
             ss[j] = ss[j + 1] + nums[j-1];
         }
 
-        vector<pair<int, int>> mxp(n + 2);
-        vector<pair<int, int>> mxs(n + 2);
+        pair<int, int> mxp[20010];
+        pair<int, int> mxs[20010];
         
         for(int i = k, j = n - k + 1; i <= n; i++, j--) {
             int ppp = ps[i] - ps[i-k];
