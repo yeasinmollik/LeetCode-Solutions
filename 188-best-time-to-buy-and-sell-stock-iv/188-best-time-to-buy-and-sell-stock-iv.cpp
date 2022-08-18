@@ -5,6 +5,7 @@ public:
     
     int maxProfit(int k, vector<int>& prices) {
         n = prices.size();    
+        
         memset(dp, -1, sizeof(dp));
         return solve(0, k, prices);
     }
@@ -23,8 +24,7 @@ public:
                 if(profit > mx)
                     mx = profit;
             }
-        }
-        
+        }        
         return dp[curr][k] = mx;
     }
 };
