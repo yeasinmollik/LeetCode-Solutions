@@ -12,7 +12,6 @@ public:
             if(to_remove <= 0)
                 return i + 1;
         }
-        
         return 0;
     }
 };
