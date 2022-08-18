@@ -25,6 +25,8 @@ public:
             sum += nums[i];
             int next = solve(i + 1, k - 1, nums);
             mn = min(mn, max(sum, next));
+            if(next < sum)
+                break;
         }
         return dp[idx][k] = mn;
     }
