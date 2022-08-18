@@ -18,8 +18,11 @@ public:
         
         int mx = solve(curr + 1, k, prices);
         for(int i = curr + 1; i < n; i++){
-            if(prices[i] >= prices[curr])            
-                mx = max(mx, prices[i] - prices[curr] + solve(i + 1, k - 1, prices));
+            if(prices[i] >= prices[curr]){
+                int profit = prices[i] - prices[curr] + solve(i + 1, k - 1, prices);
+                if(profit > mx)
+                    mx = profit;
+            }
         }
         
         return dp[curr][k] = mx;
