@@ -7,7 +7,7 @@ public:
         int ans = m * n;
         
         while(left <= right){
-            int mid  = (left + right)/2;
+            int mid  = (left + right)>>1;
             int cnt = count(m, n, mid);
             if(cnt >= k)
                 right = mid - 1, ans = mid;
