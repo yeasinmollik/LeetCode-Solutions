@@ -5,6 +5,7 @@ public:
     int findKthNumber(int m, int n, int k) {
         int left = 1, right = m * n;
         int ans = m * n;
+        
         while(left <= right){
             int mid  = (left + right)/2;
             int cnt = count(m, n, mid);
