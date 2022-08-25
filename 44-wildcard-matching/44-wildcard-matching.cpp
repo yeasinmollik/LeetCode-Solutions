@@ -2,7 +2,6 @@ class Solution {
 public:
     bool isMatch(string s, string p) { 
         int m = s.length(), n = p.length();
-        if (n > 30000) return false; // the trick
         vector<bool> cur(m + 1, false); 
         cur[0] = true;
         for (int j = 1; j <= n; j++) {
