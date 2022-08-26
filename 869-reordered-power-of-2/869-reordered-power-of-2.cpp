@@ -8,7 +8,7 @@ public:
         string s = to_string(n);
         sort(s.begin(), s.end());
         do{
-            if(s.front() != '0' && pw.find(stol(s))!=pw.end())
+            if(s.front() != '0' && pw[stol(s)])
                 return true;
         }while(next_permutation(s.begin(), s.end()));
         return false;
