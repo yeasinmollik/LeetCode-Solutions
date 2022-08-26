@@ -4,9 +4,13 @@ public:
         string s = to_string(n);
         sort(s.begin(), s.end());
         do{
-            if(s.front() != '0' && (stoi(s) & (stoi(s) - 1)) == 0)
+            if(s[0] == '0')
+                continue;
+            int num = stoi(s);
+            if((num & (num - 1)) == 0)
                 return true;
         }while(next_permutation(s.begin(), s.end()));
+        
         return false;
     }
 };
