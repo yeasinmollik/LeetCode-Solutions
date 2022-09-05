@@ -21,15 +21,15 @@ public:
 class Solution {
 public:
     vector<vector<int>> levelOrder(Node* root) {
+        if(!root)
+            return {};
+        
         vector<vector<int>> ans;
         solve(root, 0, ans);
         return ans;
     }
     
-    void solve(Node *root, int level, vector<vector<int>> &ans){
-        if(!root)
-            return;
-        
+    void solve(Node *root, int level, vector<vector<int>> &ans){       
         if(level >= ans.size())
             ans.push_back({root->val});
         else
