@@ -2,7 +2,7 @@ class Solution {
 public:
     vector<int> productExceptSelf(vector<int>& nums) {
         int n = nums.size();
-        int p[100010], s[100010];
+        vector<int> p(n + 2), s(n + 2);
         p[0] = s[n + 1] = 1;
         
         for(int i = 1, j = n; i <= n; i++, j--){
