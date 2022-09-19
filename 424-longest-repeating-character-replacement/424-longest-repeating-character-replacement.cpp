@@ -2,10 +2,15 @@ class Solution {
 public:
     int characterReplacement(string s, int k) {
         int n = s.size();
+        bool exists[91] = {};
+        for(char c: s)
+            exists[c] = true;
+        
         int ans = 0;
         for(char i = 'A'; i <= 'Z'; i++){
-            int l = 0, r = 0;
-            int cnt = 0;
+            if(!exists[i])
+                continue;
+            int l = 0, r = 0, cnt = 0;
             while(r < n){
                 cnt += s[r] == i;
                 while(cnt + k < (r - l + 1)){
