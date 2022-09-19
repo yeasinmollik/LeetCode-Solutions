@@ -1,10 +1,10 @@
 class Solution {
 public:
     int trap(vector<int>& height) {
-        int l = 0, r = height.size() - 1;
         int leftMax = 0, rightMax = 0, ans = 0;
+        int l = 0, r = height.size() - 1;
         
-        while(l <= r){
+        while(l < r){
             leftMax = max(leftMax, height[l]);
             rightMax = max(rightMax, height[r]);
             
@@ -12,7 +12,7 @@ public:
                 ans += leftMax - height[l];
                 l++;
             }
-            else {
+            else{
                 ans += rightMax - height[r];
                 r--;
             }
