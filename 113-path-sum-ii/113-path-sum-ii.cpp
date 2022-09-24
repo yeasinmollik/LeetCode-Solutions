@@ -24,19 +24,13 @@ public:
     void solve(int sum, int target, TreeNode *root, vector<int> &p, vector<vector<int>> &ans){          
         p.push_back(root->val);
         sum += root->val;
-        
-         if(!root->left && !root->right){
-            if(sum == target)
-                ans.push_back(p);
-             p.pop_back();
-            return;
-        }
-        
         if(root->left)
             solve(sum, target, root->left, p, ans);
         if(root->right)
             solve(sum, target, root->right, p, ans);
         
+        if(!root->left && !root->right && sum == target)
+                ans.push_back(p);       
         p.pop_back();
     }
 };
