@@ -11,20 +11,20 @@
  */
 class Solution {
 public:
+    int good = 0;
+    
     int goodNodes(TreeNode* root) {
-        int good = 0;
-        solve(root, INT_MIN, good);
+        solve(root, -100000);
         return good;
     }
     
-    void solve(TreeNode* root, int mx, int &good){
+    void solve(TreeNode* root, int mx){
         if(!root)
             return;
         
-        if(root->val >= mx)
-            good++, mx = root->val;
-        
-        solve(root->left, mx, good);
-        solve(root->right, mx, good);
+        mx = max(mx, root->val);
+        good += mx == root->val;
+        solve(root->left, mx);
+        solve(root->right, mx);
     }
 };
