@@ -1,11 +1,12 @@
 class Solution {
 public:
     bool containsDuplicate(vector<int>& nums) {
-        unordered_map<int, bool> before;
+        unordered_map<int, bool> m;
+        
         for(int x: nums){
-            if(before[x])
+            if(m[x])
                 return true;
-            before[x] = true;
+            m[x] = true;
         }
         return false;
     }
